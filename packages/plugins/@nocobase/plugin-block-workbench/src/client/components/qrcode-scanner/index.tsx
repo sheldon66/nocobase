@@ -29,13 +29,20 @@ export const QRCodeScannerInner = (props) => {
     const scanner = new Html5Qrcode('qrcode');
     const init = async ({ width, height }: { width: number; height: number }) => {
       scanner.start(
-        { facingMode: 'environment' },
+        {
+          facingMode: 'environment',
+        },
         {
           fps: 10, // Optional, frame per seconds for qr code scanning
-          aspectRatio: height / width,
+          aspectRatio: 1.777,
+          // videoConstraints: {
+          //   width: { min: 160, ideal: 270, max: 640 },
+          //   height: { min: 240, ideal: 480, max: 480 },
+          // },
           qrbox(width, height) {
             const minEdge = Math.min(width, height);
-            return { width: minEdge * 0.7, height: minEdge * 0.7 };
+            const qrcodeSize = Math.floor(minEdge * 0.7);
+            return { width: qrcodeSize, height: qrcodeSize };
           },
         },
         (text, result) => {
@@ -61,7 +68,7 @@ export const QRCodeScannerInner = (props) => {
     };
   }, [navigate]);
 
-  return <div ref={containerRef} id="qrcode" style={{ width: '100%', height: '100%' }} />;
+  return <div ref={containerRef} id="qrcode" />;
 };
 
 export const QRCodeScanner = (props) => {
