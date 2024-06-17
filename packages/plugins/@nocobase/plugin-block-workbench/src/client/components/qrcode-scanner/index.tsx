@@ -34,14 +34,15 @@ export const QRCodeScannerInner = (props) => {
         },
         {
           fps: 10, // Optional, frame per seconds for qr code scanning
-          aspectRatio: 1.777,
+          // aspectRatio: 2,
           // videoConstraints: {
-          //   width: { min: 160, ideal: 270, max: 640 },
-          //   height: { min: 240, ideal: 480, max: 480 },
+          //   // width: { exact: width },
+          //   height: { max: height },
           // },
           qrbox(width, height) {
+            console.log('wh', width, height);
             const minEdge = Math.min(width, height);
-            const qrcodeSize = Math.floor(minEdge * 0.7);
+            const qrcodeSize = Math.floor(minEdge * 0.6);
             return { width: qrcodeSize, height: qrcodeSize };
           },
         },
