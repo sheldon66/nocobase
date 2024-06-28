@@ -14,5 +14,6 @@ export default defineCollection({
   fields: [
     { type: 'string', name: 'title' },
     { type: 'json', name: 'config' },
+    { type: 'text', name: 'description' },
   ],
 });

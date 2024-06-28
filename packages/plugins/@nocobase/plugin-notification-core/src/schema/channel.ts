@@ -13,7 +13,7 @@ export default defineCollection({
   name: COLLECTION_NAME.channels,
   fields: [
     { type: 'string', name: 'title' },
-    { type: 'json', name: 'config' },
+    { type: 'json', name: 'options' },
   ],
 });
 
